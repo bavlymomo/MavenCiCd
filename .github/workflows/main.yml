@@ -1,0 +1,23 @@
+name: Java CI with Maven  # 👈 The workflow's name
+
+on:                      # 👈 When to run
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:                    # 👈 What to do
+  build:
+    runs-on: ubuntu-latest
+
+    steps:               # 👈 Steps (like a recipe)
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '19'
+
+      - name: Build and Test
+        run: mvn -B package --file pom.xml
