@@ -1,22 +1,23 @@
-name: Java CI with Maven  # 👈 The workflow's name
+name: Java CI with Maven  
 
-on:                      # 👈 When to run
+on:                    
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
-jobs:                    # 👈 What to do
+jobs:                 
   build:
     runs-on: ubuntu-latest
 
-    steps:               # 👈 Steps (like a recipe)
+    steps:              
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
+          distribution: 'temurin'
           java-version: '19'
 
       - name: Build and Test
